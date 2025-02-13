@@ -1,5 +1,6 @@
 import React from "react";
 
+//Component to display all the categories
 const CategoryList = ({ categories, selectedCategory, setSelectedCategory }) => {
     return (
         <div>

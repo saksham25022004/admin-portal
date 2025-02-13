@@ -11,10 +11,11 @@ const ProductListing = () => {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [error, setError] = useState("");
 
-    // Fetch Categories
+    // Fetch all the Categories
     useEffect(() => {
         const fetchCategories = async () => {
             try {
+                //It will fetch all the categories
                 const res = await axios.get("http://localhost:5000/api/categories");
                 setCategories(res.data);
             } 
@@ -25,10 +26,12 @@ const ProductListing = () => {
         fetchCategories();
     }, []);
 
-    // Fetch Products
+    // Fetch all the Products
     useEffect(() => {
         const fetchProducts = async () => {
             try {
+                //if the category is all it will fetch all the product
+                //if the category is specific the it will fetch only the related product of the category
                 let url = selectedCategory
                     ? `http://localhost:5000/api/products/${selectedCategory}`
                     : `http://localhost:5000/api/products/AllProducts`;
@@ -44,15 +47,19 @@ const ProductListing = () => {
     }, [selectedCategory]);
 
     return (
+        //Admin portal
         <div className="container">
             {error && <p className="error-text">{error}</p>}
 
             <h1>Admin Portal</h1>
 
+            {/*Display the form for add product in the database */}
             <ProductForm setProducts={setProducts} setSelectedCategory={setSelectedCategory}/>
 
+            {/*Display all the categories*/}
             <CategoryList categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
 
+            {/*Display all the products */}
             <h2>Products</h2>
             <div className="product-list">
                 {products.length > 0 ? (

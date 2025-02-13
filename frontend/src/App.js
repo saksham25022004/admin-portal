@@ -4,7 +4,7 @@ import ProductListing from "./Components/ProductListing"
 function App() {
   return (
     <div className="App">
-      <ProductListing />
+      <ProductListing /> {/*Component of the product listing */}
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 
+//Component to display the single product
 const ProductCard = ({ product }) => {
     return (
         <div className="product-card">
