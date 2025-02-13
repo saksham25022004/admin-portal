@@ -2,6 +2,11 @@ import React from "react";
 
 //Component to display all the categories
 const CategoryList = ({ categories, selectedCategory, setSelectedCategory }) => {
+    // Sort categories so that "Others" is always at the end
+    const sortedCategories = [...categories].sort((a, b) => 
+        a.name === "Others" ? 1 : b.name === "Others" ? -1 : 0
+    );
+
     return (
         <div>
             <h2>Categories</h2>
@@ -9,7 +14,7 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }) => 
                 <button onClick={() => setSelectedCategory("")} className={selectedCategory === "" ? "active" : ""}>
                     All
                 </button>
-                {categories.map((cat) => (
+                {sortedCategories.map((cat) => (
                     <button
                         key={cat._id}
                         onClick={() => setSelectedCategory(cat.name)}
@@ -22,5 +27,6 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }) => 
         </div>
     );
 };
+
 
 export default CategoryList;
