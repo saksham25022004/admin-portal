@@ -1,4 +1,4 @@
-### Admin Portal with Gemini AI Integration
+# Admin Portal with Gemini AI Integration
 This project is an Admin Portal that allows users to add products with a title, description, and image. It integrates Gemini AI to automatically classify products into predefined categories before saving them to the database.
 
 ## Features
